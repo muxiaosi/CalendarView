@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.mxs.calendarview.binding.ResourceId" />
+
+        <variable
+            name="bean"
+            type="com.mxs.calendarview.DateBean" />
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/calendar_date_height"
+        android:background="@{ResourceId.wrap(bean.setChooseItemBg())}">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_margin_15"
+            android:text="@{bean.dateStatusMsg()}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/common_size_12"
+            android:visibility="@{bean.showDateStatus()}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/common_margin_20"
+            android:text="@{bean.setDateMsg()}"
+            android:textColor="@{ResourceId.wrap(bean.setDateTextColor())}"
+            android:textSize="@dimen/common_size_14"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

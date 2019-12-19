@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="white">#ffffff</color>
+    <color name="color_red_FC5F46">#FC5F46</color>
+    <color name="color_red_FFE8E3">#FFE8E3</color>
+    <color name="color_gray_C2C2C2">#C2C2C2</color>
+    <color name="common_color_333">#333333</color>
+    <color name="common_color_background">#f6f6f6</color>
+    <color name="common_color_divider">#ddd</color>
+    <color name="common_color_666">#666666</color>
+</resources>

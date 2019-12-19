@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CalendarView">
+        <!--是否显示周-->
+        <attr name="show_week" format="boolean" />
+        <!--设置多显示几个月-->
+        <attr name="max_month" format="integer" />
+        <!--设置最大选择日期的跨度范围-->
+        <attr name="max_range" format="integer" />
+    </declare-styleable>
+
+</resources>

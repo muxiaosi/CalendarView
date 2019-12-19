@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="isEnable"
+            type="Boolean" />
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.mxs.calendarview.CalendarView
+            android:id="@+id/cv_calendar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/rl_calendar_btn_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:max_range="31" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/rl_calendar_btn_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_margin_75"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <View
+                style="@style/CommonDividerLine"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btn_calendar"
+                style="@style/CommonBtnStyle"
+                android:layout_marginLeft="@dimen/common_margin_15"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="@dimen/common_margin_15"
+                android:enabled="@{isEnable}"
+                android:text="@string/common_btn_ok"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

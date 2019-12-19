@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CalendarView</string>
+
+    <string name="date_max_range">选择时间不能超过%d天</string>
+</resources>

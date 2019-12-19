@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CalendarViewDemo</string>
+    <string name="common_btn_ok">确定</string>
+    <string name="please_select_calendar">请选择开始日期</string>
+</resources>
