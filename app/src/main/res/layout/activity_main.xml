@@ -22,7 +22,8 @@
             app:layout_constraintBottom_toTopOf="@+id/rl_calendar_btn_layout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:max_range="31" />
+            app:max_range="31"
+            app:max_month="4"/>
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/rl_calendar_btn_layout"
