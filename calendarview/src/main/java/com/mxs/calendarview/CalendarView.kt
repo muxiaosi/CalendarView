@@ -51,12 +51,12 @@ class CalendarView(val mContext: Context, attrs: AttributeSet?) : LinearLayout(m
         CalendarAdapter(mContext, mList)
     }
 
-    private var mDateSelectedCallBack : DateSelectCallBack? = null
+    private var mDateSelectedCallBack: DateSelectCallBack? = null
 
     /**
      * 选择日期回调
      */
-    fun setDateSelectedCallBackListener(listener : DateSelectCallBack){
+    fun setDateSelectedCallBackListener(listener: DateSelectCallBack) {
         mDateSelectedCallBack = listener
     }
 
@@ -66,7 +66,7 @@ class CalendarView(val mContext: Context, attrs: AttributeSet?) : LinearLayout(m
             val attributes = mContext.obtainStyledAttributes(attrs, R.styleable.CalendarView)
             val hasWeek = attributes.getBoolean(R.styleable.CalendarView_show_week, true)
             mMaxMonth = attributes.getInt(R.styleable.CalendarView_max_month, 3)
-            mMaxRange = attributes.getInt(R.styleable.CalendarView_max_range, 3)
+            mMaxRange = attributes.getInt(R.styleable.CalendarView_max_range, -1)
             if (hasWeek) {
                 initWeekView()
             }
@@ -122,7 +122,14 @@ class CalendarView(val mContext: Context, attrs: AttributeSet?) : LinearLayout(m
                                     bean.isChooseDay = true
                                     refreshChooseUi(bean, firstBean)
                                 }
-                                else -> Toast.makeText(mContext,String.format(mContext.getString(R.string.date_max_range), mMaxRange),Toast.LENGTH_SHORT).show()
+                                else -> Toast.makeText(
+                                    mContext,
+                                    String.format(
+                                        mContext.getString(R.string.date_max_range),
+                                        mMaxRange
+                                    ),
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             }
                         }
                     }
@@ -134,20 +141,24 @@ class CalendarView(val mContext: Context, attrs: AttributeSet?) : LinearLayout(m
             }
         })
 
-        rv_calender_view.addItemDecoration(CalendarDateDecoration(mContext, object : CalendarDateDecoration.ChooseCallback {
-            override fun getGroupId(position: Int): String {
-                if (position == -1) {
-                    return ""
-                }
-                //返回年月栏数据，如2019年1月
-                return if (position < mList.size) {
-                    mList[position].groupName
-                } else {
-                    ""
-                }
-            }
+        rv_calender_view.addItemDecoration(
+            CalendarDateDecoration(
+                mContext,
+                object : CalendarDateDecoration.ChooseCallback {
+                    override fun getGroupId(position: Int): String {
+                        if (position == -1) {
+                            return ""
+                        }
+                        //返回年月栏数据，如2019年1月
+                        return if (position < mList.size) {
+                            mList[position].groupName
+                        } else {
+                            ""
+                        }
+                    }
 
-        }))
+                })
+        )
 
         //滑动到当前月，即最后一项
         rv_calender_view.scrollToPosition(mList.size - 1)
@@ -214,8 +225,10 @@ class CalendarView(val mContext: Context, attrs: AttributeSet?) : LinearLayout(m
         val firstLongTime = TimeUtils.date2TimeStamp(firstBean.dateToString(), "yyyy-MM-dd")
         val selectLongTime = TimeUtils.date2TimeStamp(bean.dateToString(), "yyyy-MM-dd")
         val diffLongTime = selectLongTime - firstLongTime
-        if (TimeUtils.diffTime2diffDay(abs(diffLongTime)) > mMaxRange) {
-            return -1
+        if (mMaxRange != -1) {
+            if (TimeUtils.diffTime2diffDay(abs(diffLongTime)) > mMaxRange) {
+                return -1
+            }
         }
         return if (diffLongTime > 0) {
             1
@@ -261,10 +274,10 @@ class CalendarView(val mContext: Context, attrs: AttributeSet?) : LinearLayout(m
      */
     private fun getSelectDayCount(): Int {
         val curList = Stream.of(mList)
-                .filter { bean ->
-                    bean.isChooseDay
-                }
-                .collect(Collectors.toList())
+            .filter { bean ->
+                bean.isChooseDay
+            }
+            .collect(Collectors.toList())
         return curList.size
     }
 
@@ -390,7 +403,10 @@ class CalendarView(val mContext: Context, attrs: AttributeSet?) : LinearLayout(m
             val textView = TextView(mContext)
             textView.layoutParams = itemParams
             textView.setTextColor(ContextCompat.getColor(mContext, R.color.common_color_666))
-            textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, mContext.resources.getDimensionPixelSize(R.dimen.common_size_12).toFloat())
+            textView.setTextSize(
+                TypedValue.COMPLEX_UNIT_PX,
+                mContext.resources.getDimensionPixelSize(R.dimen.common_size_12).toFloat()
+            )
             textView.gravity = Gravity.CENTER
             val marginTop = mContext.resources.getDimensionPixelSize(R.dimen.common_margin_15)
             textView.setPadding(marginTop, marginTop, marginTop, marginTop)

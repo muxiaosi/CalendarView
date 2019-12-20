@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
+    <dimen name="common_margin_12">12dp</dimen>
     <dimen name="common_margin_15">15dp</dimen>
     <dimen name="common_margin_20" tools:ignore="MissingDefaultResource">20dp</dimen>
     <dimen name="common_margin_28" tools:ignore="MissingDefaultResource">28dp</dimen>

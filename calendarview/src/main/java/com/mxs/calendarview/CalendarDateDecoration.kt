@@ -55,7 +55,7 @@ class CalendarDateDecoration(val context: Context, private val mCallback: Choose
         mTextPaint.color = ContextCompat.getColor(context, R.color.common_color_333)
         mTextPaint.textAlign = Paint.Align.CENTER
         val fontMetrics = mTextPaint.fontMetrics
-        mTop = dp2px(context, 32.0f)
+        mTop = dp2px(context, 40.0f)
         mTopPadding = -((fontMetrics.bottom - fontMetrics.top) / 2 + fontMetrics.top)
 
         mDividerPaint.color = ContextCompat.getColor(context, R.color.common_color_divider)
